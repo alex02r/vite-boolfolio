@@ -1,10 +1,10 @@
 <script>
-import projects from "./components/projects.vue";
+import ProjectCard from "./components/ProjectCard.vue";
 import { store } from "./store";
 import axios from 'axios';
 export default {
   components:{
-    projects
+    ProjectCard
   },
   data() {
     return {
@@ -25,7 +25,7 @@ export default {
 }
 </script>
 <template lang="">
-  <projects></projects>
+  <ProjectCard></ProjectCard>
 </template>
 <style lang="scss">
   @use './styles/generals.scss'
