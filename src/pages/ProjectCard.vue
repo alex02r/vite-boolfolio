@@ -18,15 +18,11 @@ export default {
 }
 </script>
 <template lang="">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12 bg-white p-2">
-        <h1>All Projects</h1>
-      </div>
-    </div>
-  </div>
   <div class="container my-4">
     <div class="row row-gap-4">
+      <div class="col-12 p-2">
+        <h1>All Projects</h1>
+      </div>
       <div class="col-3" v-for="(project, index) in store.projects" :key="index">
         <div class="my-card">
           <img :src="getImage(project.img)" :alt="project.name">
