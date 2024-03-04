@@ -27,11 +27,19 @@ export default {
   </div>
   <div class="container my-4">
     <div class="row row-gap-4">
-      <div class="col-4" v-for="(project, index) in store.projects" :key="index">
+      <div class="col-3" v-for="(project, index) in store.projects" :key="index">
         <div class="my-card">
           <img :src="getImage(project.img)" :alt="project.name">
           <h5>{{ project.name}}</h5>
           <p>{{ project.description }}</p>
+          <div v-if="project.technologies.length > 0" class="">
+            Tecnologie:
+            <ul class="list-unstyled d-flex gap-2">
+              <li v-for="(tech, index) in project.technologies" :key="index">
+                <span :class="`badge text-bg-${tech.class_color}`">{{tech.name}}</span>
+              </li>
+            </ul>
+          </div>
           <div class="my-card-date">
             <div>{{ project.start_date }}</div><div>{{ project.end_date }}</div>
           </div>
