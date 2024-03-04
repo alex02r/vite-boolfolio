@@ -35,6 +35,7 @@ export default {
 </script>
 <template lang="">
   <ProjectCard></ProjectCard>
+  <router-view></router-view>
   <div class="container mb-3">
     <div class="row">
       <div class="col-12">
