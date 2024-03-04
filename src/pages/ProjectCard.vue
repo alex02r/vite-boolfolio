@@ -8,7 +8,7 @@ export default {
   },
   methods: {
     getImage(img){
-      let path = 'https://cdn-icons-png.flaticon.com/512/3767/3767084.png'
+      let path = 'https://blush.design/api/download?shareUri=FXLhsvs4ES&w=800&h=800&fm=png' //'https://cdn-icons-png.flaticon.com/512/3767/3767084.png'
       if (img != null) {
         path = `${store.API_URL}/storage/${img}`
       }
