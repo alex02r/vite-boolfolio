@@ -27,7 +27,6 @@ export default {
         store.projects = response.data.results.data
         this.currentPage = response.data.results.current_page
         this.lastPage = response.data.results.last_page
-        console.log(response.data.results);
       })
     }
   },
