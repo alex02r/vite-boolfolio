@@ -41,10 +41,7 @@ export default {
           <span class="title">Tipo:</span>
           {{ project.type ? project.type.name : 'nessun tipo associato'}}
         </div>
-        <div class="info-card mb-3">
-          <span class="title">Tipo:</span>
-          {{ project.type ? project.type.name : 'nessun tipo associato'}}
-        </div>
+        
         <div class="my-card-date">
           <div>{{ project.start_date }}</div><div>{{ project.end_date }}</div>
         </div>
