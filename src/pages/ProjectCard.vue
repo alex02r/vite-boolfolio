@@ -22,29 +22,34 @@ export default {
 </script>
 <template lang="">
   <div class="col-3">
-    <div class="my-card">
-      <img :src="getImage(project.img)" :alt="project.name">
-      <h5>{{ project.name}}</h5>
-      <p class="text-secondary">{{ project.description }}</p>
-      <div class="info-card">
-        <span class="title">Tecnologie: </span>
-        <ul class="list-unstyled d-flex gap-2" v-if="project.technologies.length > 0">
-          <li v-for="(tech, index) in project.technologies" :key="index">
-            <span :class="`badge text-bg-${tech.class_color}`">{{tech.name}}</span>
-          </li>
-        </ul>
-        <span class="badge text-bg-secondary" v-else>nessuna</span>
-      </div>
+    <router-link :to="{ name: 'single-project', params: { slug: project.slug } }" class="nav-link h-100">
+      <div class="my-card">
+        <img :src="getImage(project.img)" :alt="project.name">
+        <h5>{{ project.name}}</h5>
+        <p class="text-secondary">{{ project.description }}</p>
+        <div class="info-card">
+          <span class="title">Tecnologie: </span>
+          <ul class="list-unstyled d-flex gap-2" v-if="project.technologies.length > 0">
+            <li v-for="(tech, index) in project.technologies" :key="index">
+              <span :class="`badge text-bg-${tech.class_color}`">{{tech.name}}</span>
+            </li>
+          </ul>
+          <span class="badge text-bg-secondary" v-else>nessuna</span>
+        </div>
 
-      <div class="info-card mb-3">
-        <span class="title">Tipo:</span>
-        {{ project.type ? project.type.name : 'nessun tipo associato'}}
+        <div class="info-card mb-3">
+          <span class="title">Tipo:</span>
+          {{ project.type ? project.type.name : 'nessun tipo associato'}}
+        </div>
+        <div class="info-card mb-3">
+          <span class="title">Tipo:</span>
+          {{ project.type ? project.type.name : 'nessun tipo associato'}}
+        </div>
+        <div class="my-card-date">
+          <div>{{ project.start_date }}</div><div>{{ project.end_date }}</div>
+        </div>
       </div>
-
-      <div class="my-card-date">
-        <div>{{ project.start_date }}</div><div>{{ project.end_date }}</div>
-      </div>
-    </div>
+    </router-link>
   </div>
 </template>
 <style lang="scss" scoped>
