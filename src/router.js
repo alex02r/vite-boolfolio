@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import AppHome from './pages/AppHome.vue'
-import ProjectCard from './pages/ProjectCard.vue'
+import AppProjects from './pages/AppProjects.vue'
 import AppNotFound from './pages/AppNotFound.vue'
 
 const router = createRouter({
@@ -8,7 +8,7 @@ const router = createRouter({
 
     routes: [
         {path: '/', name: 'home', component: AppHome},
-        {path: '/projects', name: 'projects', component: ProjectCard},
+        {path: '/projects', name: 'projects', component: AppProjects},
         {path: '/:pathMatch(.*)*', name: 'NotFound', component: AppNotFound}
     ]
 })

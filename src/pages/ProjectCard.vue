@@ -1,6 +1,9 @@
 <script>
 import { store } from '../store';
 export default {
+  props:{
+    project: Object
+  },
   data() {
     return {
       store
@@ -18,35 +21,28 @@ export default {
 }
 </script>
 <template lang="">
-  <div class="container my-4">
-    <div class="row row-gap-4">
-      <div class="col-12 p-2">
-        <h1>All Projects</h1>
+  <div class="col-3">
+    <div class="my-card">
+      <img :src="getImage(project.img)" :alt="project.name">
+      <h5>{{ project.name}}</h5>
+      <p class="text-secondary">{{ project.description }}</p>
+      <div class="info-card">
+        <span class="title">Tecnologie: </span>
+        <ul class="list-unstyled d-flex gap-2" v-if="project.technologies.length > 0">
+          <li v-for="(tech, index) in project.technologies" :key="index">
+            <span :class="`badge text-bg-${tech.class_color}`">{{tech.name}}</span>
+          </li>
+        </ul>
+        <span class="badge text-bg-secondary" v-else>nessuna</span>
       </div>
-      <div class="col-3" v-for="(project, index) in store.projects" :key="index">
-        <div class="my-card">
-          <img :src="getImage(project.img)" :alt="project.name">
-          <h5>{{ project.name}}</h5>
-          <p class="text-secondary">{{ project.description }}</p>
-          <div class="info-card">
-            <span class="title">Tecnologie: </span>
-            <ul class="list-unstyled d-flex gap-2" v-if="project.technologies.length > 0">
-              <li v-for="(tech, index) in project.technologies" :key="index">
-                <span :class="`badge text-bg-${tech.class_color}`">{{tech.name}}</span>
-              </li>
-            </ul>
-            <span class="badge text-bg-secondary" v-else>nessuna</span>
-          </div>
 
-          <div class="info-card mb-3">
-            <span class="title">Tipo:</span>
-            {{ project.type ? project.type.name : 'nessun tipo associato'}}
-          </div>
+      <div class="info-card mb-3">
+        <span class="title">Tipo:</span>
+        {{ project.type ? project.type.name : 'nessun tipo associato'}}
+      </div>
 
-          <div class="my-card-date">
-            <div>{{ project.start_date }}</div><div>{{ project.end_date }}</div>
-          </div>
-        </div>
+      <div class="my-card-date">
+        <div>{{ project.start_date }}</div><div>{{ project.end_date }}</div>
       </div>
     </div>
   </div>
