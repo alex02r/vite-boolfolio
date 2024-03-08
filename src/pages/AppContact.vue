@@ -10,10 +10,13 @@ export default {
             phone: '',
             mail: '',
             mex: '',
+            errors: {},
+            sending: false
         }
     },
     methods: {
         sendForm(){
+            this.sending = true
             const data = {
                 name: this.name,
                 surname: this.surname,
@@ -22,7 +25,17 @@ export default {
                 mex: this.mex,
             }
             axios.post(`${store.API_URL}/api/contacts`, data).then(response => {
-                console.log(response.data);
+                this.errors = {}
+                if (response.data.success) {
+                    this.name = ''
+                    this.surname = ''
+                    this.phone = ''
+                    this.mail = ''
+                    this.mex = ''
+                }else{
+                    this.errors = response.data.errors
+                }
+                this.sending = false
             })
         }
     },
@@ -56,7 +69,7 @@ export default {
                         <label for="mex" class="form-label">Messaggio</label>
                         <textarea class="form-control" id="mex" name="mex" rows="4" v-model="mex" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-sm btn-dark mb-3">Send</button>
+                    <button type="submit" :disabled="sending" class="btn btn-sm btn-dark mb-3" >{{sending ? 'Invio in corso' : 'Send'}}</button>
                 </form>
             </div>
         </div>
