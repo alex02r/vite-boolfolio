@@ -32,6 +32,9 @@ export default {
                     this.phone = ''
                     this.mail = ''
                     this.mex = ''
+                    this.$router.push({
+                        name: 'ThankYou'
+                    })
                 }else{
                     this.errors = response.data.errors
                 }
