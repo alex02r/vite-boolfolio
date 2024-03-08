@@ -1,25 +1,25 @@
 <script>
+import axios from 'axios';
+import { store } from "../store";
 export default {
-    
+    data() {
+        return {
+            store
+        }
+    },
+    methods: {
+        
+    },
 }
 </script>
 <template lang="">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="bg-contact my-5" id="contact">
-                    <h1>CONTATTAMI</h1>
-                </div>
+    <div class="container my-5">
+        <div class="row justify-content-center row-gap-3">
+            <div class="col-12 text-center">
+                <h1>CONTATTACI</h1>
             </div>
-            <div class="col-12 col-md-6">
-                <div class="h-100 d-flex justify-content-center align-items-center">
-                    <h2>Just a coffe</h2>
-                    <h5>Compila il form per contattarmi</h5>
-                    <span>Tempo medio di risposta entro 24 ore</span>
-                </div>
-            </div>
-            <div class="col-12 col-md-6">
-                <form @submit.prevent=”sendForm()” method="post">
+            <div class="col-8 bg-white p-3 rounded">
+                <form @submit.prevent="sendForm()" method="post">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome</label>
                         <input type="text" class="form-control" id="name" name="name">
@@ -46,14 +46,5 @@ export default {
         </div>
     </div>
 </template>
-<style lang="scss" scoped>
-    .bg-contact{
-        width: 100%;
-        height: 250px;
-        background-image: url('https://res.cloudinary.com/stills-website/image/private/t_2xl-w,f_auto/v1/files/images/p-995a3e95-fdf1-411b-a4e1-cef7f023e459.jpg');
-        background-size: cover;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+<style lang="">
 </style>
