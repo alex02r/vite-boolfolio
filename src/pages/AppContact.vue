@@ -51,23 +51,28 @@ export default {
                 <form @submit.prevent="sendForm()" method="post">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="name" name="name" v-model="name" required>
+                        <input type="text" class="form-control" id="name" name="name" v-model="name" :class="errors.name ? 'is-invalid' : '' ">
+                        <p v-for="(error, index) in errors.name" :key="`message-error-${index}`" class="text-danger">{{ error }}</p>
                     </div>
                     <div class="mb-3">
                         <label for="surname" class="form-label">Cognome</label>
-                        <input type="text" class="form-control" id="surname" name="surname" v-model="surname" required>
+                        <input type="text" class="form-control" id="surname" name="surname" v-model="surname" required :class="errors.surname ? 'is-invalid' : '' ">
+                        <p v-for="(error, index) in errors.surname" :key="`message-error-${index}`" class="text-danger">{{ error }}</p>
                     </div>
                     <div class="mb-3">
                         <label for="phone" class="form-label">Numero di telefono</label>
-                        <input type="text" class="form-control" id="phone" name="phone" v-model="phone" required>
+                        <input type="text" class="form-control" id="phone" name="phone" v-model="phone" required :class="errors.phone ? 'is-invalid' : '' ">
+                        <p v-for="(error, index) in errors.phone" :key="`message-error-${index}`" class="text-danger">{{ error }}</p>
                     </div>
                     <div class="mb-3">
                         <label for="mail" class="form-label">Email</label>
-                        <input type="mail" class="form-control" id="mail" name="mail" placeholder="name@example.com" v-model="mail" required>
+                        <input type="mail" class="form-control" id="mail" name="mail" placeholder="name@example.com" v-model="mail" required :class="errors.mail ? 'is-invalid' : '' ">
+                        <p v-for="(error, index) in errors.mail" :key="`message-error-${index}`" class="text-danger">{{ error }}</p>
                     </div>
                     <div class="mb-3">
                         <label for="mex" class="form-label">Messaggio</label>
-                        <textarea class="form-control" id="mex" name="mex" rows="4" v-model="mex" required></textarea>
+                        <textarea class="form-control" id="mex" name="mex" rows="4" v-model="mex" required :class="errors.phone ? 'is-invalid' : '' "></textarea>
+                        <p v-for="(error, index) in errors.mex" :key="`message-error-${index}`" class="text-danger">{{ error }}</p>
                     </div>
                     <button type="submit" :disabled="sending" class="btn btn-sm btn-dark mb-3" >{{sending ? 'Invio in corso' : 'Send'}}</button>
                 </form>
