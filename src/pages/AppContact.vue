@@ -4,11 +4,25 @@ import { store } from "../store";
 export default {
     data() {
         return {
-            store
+            store,
+            name: '',
+            surname: '',
+            phone: '',
+            mail: '',
+            mex: '',
         }
     },
     methods: {
-        
+        sendForm(){
+            const data = [
+                name = this.name,
+                surname = this.surname,
+                phone = this.phone,
+                mail = this.mail,
+                mex = this.mex,
+            ]
+            axios.post(`${store.API_URL}/api/contacts`)
+        }
     },
 }
 </script>
@@ -22,23 +36,23 @@ export default {
                 <form @submit.prevent="sendForm()" method="post">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="name" name="name">
+                        <input type="text" class="form-control" id="name" v-model="name" required name="name">
                     </div>
                     <div class="mb-3">
                         <label for="surname" class="form-label">Cognome</label>
-                        <input type="text" class="form-control" id="surname" name="surname">
+                        <input type="text" class="form-control" id="surname" v-model="surname" required name="surname">
                     </div>
                     <div class="mb-3">
                         <label for="phone" class="form-label">Numero di telefono</label>
-                        <input type="text" class="form-control" id="phone" name="phone">
+                        <input type="text" class="form-control" id="phone" v-model="phone" required name="phone">
                     </div>
                     <div class="mb-3">
                         <label for="mail" class="form-label">Email</label>
-                        <input type="mail" class="form-control" id="mail" name="mail" placeholder="name@example.com">
+                        <input type="mail" class="form-control" id="mail" v-model="mail" required name="mail" placeholder="name@example.com">
                     </div>
                     <div class="mb-3">
                         <label for="mex" class="form-label">Messaggio</label>
-                        <textarea class="form-control" id="mex" rows="4"></textarea>
+                        <textarea class="form-control" id="mex" rows="4" v-model="mex" required></textarea>
                     </div>
                     <div class="btn btn-sm btn-dark mb-3">Send</div>
                 </form>
